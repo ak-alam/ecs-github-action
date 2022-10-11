@@ -24,5 +24,7 @@ jobs:
         id: ecr-login
         uses: aws-actions/amazon-ecr-login@v1
 
+    steps:
+      - name: test
         run: |
           aws --version
