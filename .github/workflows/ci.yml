@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build-image
+  name: build flask app
+  runs-on: ubuntu-latest
+
+  #branch checkout
+  steps:
+    - name: checkout
+      uses: action/checkout@v2
+
+    - name: configure aws creds
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-id: ${{ secrets.name }}
+        aws-secret-access-key: ${{ secrets.name }}
+        aws-region: ${{ secrets.name }}
+
+    - name: login to ecr
+
+      run: |
+        aws --version
