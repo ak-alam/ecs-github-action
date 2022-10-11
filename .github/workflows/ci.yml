@@ -26,7 +26,7 @@ jobs:
 
       - name: Build, tag and push to ecr
         env:
-          ECR_REGISTRY: ${{ steps.login-ecr.output.registry }}
+          ECR_REGISTRY: 489994096722.dkr.ecr.us-east-2.amazonaws.com #${{ steps.login-ecr.output.registry }}
           ECR_REPOSITORY: ak-hello-flask
           IMAGE_TAG: latest
         run: |
