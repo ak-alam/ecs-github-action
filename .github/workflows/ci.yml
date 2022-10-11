@@ -24,10 +24,19 @@ jobs:
         id: ecr-login
         uses: aws-actions/amazon-ecr-login@v1
 
-      - name: test
+      - name: Build, tag and push to ecr
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.output.registry }}
+          ECR_REPOSITORY: ak-hello-flask
+          IMAGE_TAG: latest
         run: |
-          aws --version
-    # steps:
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker images
+
+    #   - name: test
+    #     run: |
+    #       aws --version
+    # # steps:
     #   - name: test
     #     run: |
     #       aws --version
