@@ -4,23 +4,25 @@ on:
   push:
     branches: [ main ]
 jobs:
-  build-image
-  name: build flask app
-  runs-on: ubuntu-latest
+  build-image:
+    name: build flask app
+    runs-on: ubuntu-latest
 
   #branch checkout
-  steps:
-    - name: checkout
-      uses: action/checkout@v2
+    steps:
+      - name: checkout
+        uses: action/checkout@v2
 
-    - name: configure aws creds
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-id: ${{ secrets.name }}
-        aws-secret-access-key: ${{ secrets.name }}
-        aws-region: ${{ secrets.name }}
+      - name: configure aws creds
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2   #${{ secrets.name }}
 
-    - name: login to ecr
+      - name: login to ecr
+        id: ecr-login
+        uses: aws-actions/amazon-ecr-login@v1
 
-      run: |
-        aws --version
+        run: |
+          aws --version
