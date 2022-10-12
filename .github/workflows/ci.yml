@@ -35,3 +35,7 @@ jobs:
           docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
           docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
           # docker images
+
+      - name: Deploy
+        run: |
+          aws ecs update-service --cluster flask-app --service hello-backedn --force-new-deployment

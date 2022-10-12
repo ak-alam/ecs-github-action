@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def welcome():
-    return "Flask Server New Deployment"
+    return "Flask Server Running"
     
 @app.route('/hello', methods=['GET', 'POST'])
 def hello_world():
