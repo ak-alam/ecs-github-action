@@ -33,7 +33,7 @@ jobs:
           IMAGE_TAG=$(git rev-parse --short "$GITHUB_SHA")
           # IMAGE_TAG=${git_hash}latest
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-          # docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
           # docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker images
 
