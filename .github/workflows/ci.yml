@@ -34,12 +34,4 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
           docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
-          docker images
-
-    #   - name: test
-    #     run: |
-    #       aws --version
-    # # steps:
-    #   - name: test
-    #     run: |
-    #       aws --version
+          # docker images
