@@ -28,7 +28,7 @@ jobs:
         env:
           ECR_REGISTRY: 489994096722.dkr.ecr.us-east-2.amazonaws.com #${{ steps.ecr-login.output.registry }}
           ECR_REPOSITORY: ak-hello-flask
-          IMAGE_TAG: ${{ git_hash }}
+          IMAGE_TAG: ${{ git rev-parse --short "$GITHUB_SHA" }}
         run: |
           # git_hash=$(git rev-parse --short "$GITHUB_SHA")
           # IMAGE_TAG=${git_hash}latest
